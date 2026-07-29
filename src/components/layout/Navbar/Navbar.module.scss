@@ -5,6 +5,8 @@
   position: fixed;
   top: 0;
   inset-inline: 0;
+  width: 100%;
+  max-width: 100%;
   z-index: 1000;
   padding: 1rem 0;
   transition: background $transition-base, padding $transition-base,
@@ -82,7 +84,10 @@
   @include container;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .logo {
@@ -111,6 +116,7 @@
   display: flex;
   flex-direction: column;
   line-height: 1.25;
+  min-width: 0;
 }
 
 .logoName {
@@ -118,6 +124,10 @@
   font-size: 1.05rem;
   color: $text-dark;
   transition: color $transition-base;
+
+  @media (max-width: #{$bp-desktop - 1px}) {
+    font-size: 0.9375rem;
+  }
 }
 
 .logoSub {
@@ -125,6 +135,10 @@
   color: $text-subtle;
   letter-spacing: 0.04em;
   transition: color $transition-base;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 }
 
 .links {
@@ -220,10 +234,14 @@
   position: fixed;
   inset: 0;
   top: 72px;
+  width: 100%;
+  max-width: 100%;
   background: rgba(250, 248, 245, 0.98);
   backdrop-filter: blur(20px);
   z-index: 999;
   padding: 2rem $container-padding;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   @media (min-width: $bp-desktop) {
     display: none;

@@ -32,7 +32,7 @@ export const scaleFadeIn = {
 };
 
 export const slideInRight = {
-  hidden: { opacity: 0, x: -60, filter: 'blur(8px)' },
+  hidden: { opacity: 0, x: -24, filter: 'blur(8px)' },
   visible: {
     opacity: 1,
     x: 0,
@@ -42,7 +42,7 @@ export const slideInRight = {
 };
 
 export const slideInLeft = {
-  hidden: { opacity: 0, x: 60, filter: 'blur(8px)' },
+  hidden: { opacity: 0, x: 24, filter: 'blur(8px)' },
   visible: {
     opacity: 1,
     x: 0,
