@@ -1,0 +1,121 @@
+@use 'variables' as *;
+
+@mixin container {
+  width: 100%;
+  max-width: $container-max;
+  margin-inline: auto;
+  padding-inline: $container-padding;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin section-base {
+  padding-block: $section-padding;
+  position: relative;
+}
+
+@mixin section-light {
+  @include section-base;
+  background: $surface;
+}
+
+@mixin section-muted {
+  @include section-base;
+  background: $background;
+}
+
+@mixin section-label {
+  display: inline-block;
+  font-family: $font-english;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $accent-text;
+}
+
+@mixin heading-xl {
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: $text-dark;
+}
+
+@mixin heading-lg {
+  font-size: clamp(1.875rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: $text-dark;
+}
+
+@mixin heading-md {
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  font-weight: 700;
+  line-height: 1.35;
+  color: $text-dark;
+}
+
+@mixin body-text {
+  font-size: clamp(1rem, 1.5vw, 1.0625rem);
+  line-height: 1.85;
+  color: $text-muted;
+}
+
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid $focus-ring;
+    outline-offset: 3px;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+@mixin text-shadow-hero {
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
+}
+
+@mixin touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+@mixin pro-card {
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-xs;
+  transition: border-color $transition-base, box-shadow $transition-base,
+    transform $transition-base;
+
+  &:hover {
+    border-color: $border-strong;
+    box-shadow: $shadow-card;
+    transform: translateY(-3px);
+  }
+}
+
+@mixin pro-icon {
+  @include flex-center;
+  width: 48px;
+  height: 48px;
+  background: $primary;
+  color: $secondary;
+  font-size: 1.2rem;
+  border-radius: $radius-md;
+  flex-shrink: 0;
+}
+
+@mixin pro-divider {
+  width: 48px;
+  height: 3px;
+  background: $accent;
+  border-radius: 2px;
+}

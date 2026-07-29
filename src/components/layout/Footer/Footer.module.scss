@@ -1,0 +1,120 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.footer {
+  background: $primary-dark;
+  color: rgba(255, 255, 255, 0.75);
+  padding: clamp(3rem, 6vw, 5rem) 0 2rem;
+}
+
+.container {
+  @include container;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  @media (min-width: $bp-tablet) {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}
+
+.brand {
+  max-width: 360px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.logoIcon {
+  @include flex-center;
+  width: 44px;
+  height: 44px;
+  background: $accent;
+  color: $secondary;
+  font-family: $font-english;
+  font-weight: 800;
+  font-size: 1.25rem;
+  border-radius: $radius-sm;
+}
+
+.logoName {
+  display: block;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: $secondary;
+}
+
+.logoSub {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.tagline {
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.columnTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: $secondary;
+  margin-bottom: 1.25rem;
+}
+
+.column ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  a {
+    font-size: 0.9rem;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $accent;
+    }
+  }
+}
+
+.contactList {
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+
+    svg {
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+      color: $accent;
+    }
+  }
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 2rem;
+  font-size: 0.85rem;
+  text-align: center;
+
+  @media (min-width: $bp-tablet) {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: start;
+  }
+}
+
+.location {
+  color: rgba(255, 255, 255, 0.45);
+}

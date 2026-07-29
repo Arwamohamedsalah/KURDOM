@@ -1,0 +1,131 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.bgImage {
+  position: absolute;
+  inset: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  // RTL: content on the right — darker gradient on that side
+  background:
+    linear-gradient(
+      to left,
+      rgba(12, 8, 4, 0.88) 0%,
+      rgba(20, 14, 8, 0.72) 45%,
+      rgba(31, 31, 31, 0.55) 100%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(20, 12, 6, 0.55) 0%,
+      transparent 35%,
+      rgba(20, 12, 6, 0.65) 100%
+    );
+}
+
+.content {
+  @include container;
+  position: relative;
+  z-index: 2;
+  padding-block: 9rem 6rem;
+  width: 100%;
+
+  @media (max-width: $bp-desktop) {
+    padding-block: 8rem 5rem;
+  }
+}
+
+.textContent {
+  max-width: 680px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 100px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $hero-text;
+  margin-bottom: 1.5rem;
+  @include text-shadow-hero;
+}
+
+.headline {
+  @include heading-xl;
+  color: $hero-text;
+  margin-bottom: 1.5rem;
+  @include text-shadow-hero;
+}
+
+.description {
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  line-height: 1.85;
+  font-weight: 500;
+  color: $hero-text-muted;
+  margin-bottom: 2.5rem;
+  max-width: 580px;
+  @include text-shadow-hero;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  svg {
+    font-size: 1.1rem;
+  }
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 2rem;
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+
+  span {
+    display: block;
+    width: 26px;
+    height: 42px;
+    border: 2px solid rgba(255, 255, 255, 0.65);
+    border-radius: 12px;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      inset-inline-start: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 2px;
+    }
+  }
+}
+
+[dir='rtl'] .scrollIndicator {
+  transform: translateX(50%);
+}

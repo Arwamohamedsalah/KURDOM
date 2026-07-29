@@ -1,0 +1,271 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.section {
+  @include section-muted;
+  position: relative;
+  overflow: hidden;
+}
+
+.decor {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 45% at 95% 10%, rgba(166, 124, 82, 0.08), transparent),
+    radial-gradient(ellipse 40% 35% at 5% 90%, rgba(96, 57, 19, 0.06), transparent);
+  pointer-events: none;
+}
+
+.container {
+  @include container;
+  position: relative;
+  z-index: 1;
+}
+
+.layout {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: start;
+
+  @media (min-width: $bp-desktop) {
+    grid-template-columns: minmax(300px, 0.92fr) minmax(0, 1.08fr);
+    gap: clamp(3rem, 5vw, 4.5rem);
+  }
+}
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+
+  @media (min-width: $bp-desktop) {
+    position: sticky;
+    top: 6rem;
+  }
+}
+
+.showcase {
+  position: relative;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  border: 1px solid $border-strong;
+  box-shadow: $shadow-md;
+}
+
+.showcaseImage {
+  height: 100%;
+}
+
+.showcaseOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 1.625rem;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 12, 6, 0.02) 0%,
+    rgba(20, 12, 6, 0.45) 50%,
+    rgba(61, 36, 16, 0.92) 100%
+  );
+  pointer-events: none;
+}
+
+.showcaseLabel {
+  @include section-label;
+  color: #e8c9a8;
+}
+
+.showcaseText {
+  margin: 0;
+  max-width: 260px;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.55;
+  color: $secondary;
+}
+
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: $border-strong;
+  border: 1px solid $border-strong;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-xs;
+}
+
+.highlight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 1.125rem 0.75rem;
+  background: $surface;
+  text-align: center;
+}
+
+.highlightValue {
+  font-family: $font-english;
+  font-size: 1.375rem;
+  font-weight: 800;
+  line-height: 1;
+  color: $primary;
+}
+
+.highlightLabel {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: $text-muted;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  align-items: stretch;
+
+  @media (min-width: $bp-tablet) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.375rem;
+  }
+}
+
+.card {
+  @include pro-card;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr minmax(2.75rem, 3.25rem);
+  column-gap: 0.5rem;
+  padding: 1.375rem 1.25rem 1.5rem 1.375rem;
+  overflow: hidden;
+  background: $surface;
+  height: 100%;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    inset-inline-start: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(to bottom, $accent, $primary);
+    opacity: 0;
+    transition: opacity $transition-base;
+  }
+
+  &:hover {
+    background: $surface;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+.card:nth-child(5) {
+  @media (min-width: $bp-tablet) {
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr minmax(3.5rem, 4rem);
+    padding: 1.5rem 1.5rem 1.625rem 1.625rem;
+  }
+
+  .cardMain {
+    @media (min-width: $bp-tablet) {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 1.375rem;
+    }
+  }
+
+  .iconWrap {
+    @media (min-width: $bp-tablet) {
+      width: 52px;
+      height: 52px;
+      font-size: 1.35rem;
+      flex-shrink: 0;
+    }
+  }
+
+  .watermark {
+    @media (min-width: $bp-tablet) {
+      font-size: 3rem;
+    }
+  }
+}
+
+.watermark {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+  justify-self: center;
+  font-family: $font-english;
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1;
+  color: rgba(166, 124, 82, 0.32);
+  pointer-events: none;
+  user-select: none;
+  padding-top: 0.125rem;
+}
+
+.cardMain {
+  grid-column: 1;
+  grid-row: 1;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.iconWrap {
+  @include flex-center;
+  width: 46px;
+  height: 46px;
+  background: $primary;
+  color: $secondary;
+  font-size: 1.2rem;
+  border-radius: $radius-md;
+  box-shadow: 0 4px 12px rgba(96, 57, 19, 0.2);
+  transition: transform $transition-fast, box-shadow $transition-fast;
+
+  .card:hover & {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(96, 57, 19, 0.28);
+  }
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.serviceLabel {
+  @include section-label;
+  font-size: 0.6875rem;
+}
+
+.title {
+  @include heading-md;
+  font-size: 1.0625rem;
+  margin: 0;
+  color: $primary-dark;
+  line-height: 1.45;
+}
+
+.description {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  font-weight: 500;
+  color: $text-muted;
+}

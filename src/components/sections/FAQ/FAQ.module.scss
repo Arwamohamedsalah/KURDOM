@@ -1,0 +1,123 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+$faq-col-num: 2.25rem;
+$faq-col-icon: 2rem;
+$faq-gap: 0.875rem;
+
+.section {
+  @include section-muted;
+}
+
+.container {
+  @include container;
+  max-width: 820px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  background: $surface;
+  border: 1px solid $border-strong;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: $faq-col-num 1fr $faq-col-icon;
+  column-gap: $faq-gap;
+  padding-inline: 1.25rem;
+  border-bottom: 1px solid $border-strong;
+  overflow: hidden;
+  background: $surface;
+  transition: background $transition-fast;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &.open {
+    background: #f3ede6;
+    border-inline-start: 3px solid $primary;
+    padding-inline-start: calc(1.25rem - 3px);
+  }
+}
+
+.question {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  align-items: center;
+  width: 100%;
+  padding-block: 1.125rem;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.55;
+  color: $text-dark;
+  text-align: start;
+  transition: color $transition-fast;
+  @include focus-ring;
+
+  &:hover {
+    color: $primary-dark;
+  }
+
+  .open & {
+    color: $primary-dark;
+    padding-bottom: 0.5rem;
+  }
+}
+
+.qIndex {
+  font-family: $font-english;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  color: $secondary;
+  background: $primary;
+  padding: 0.3rem 0.45rem;
+  border-radius: 6px;
+  text-align: center;
+  line-height: 1;
+  min-width: 2rem;
+}
+
+.qText {
+  min-width: 0;
+  color: inherit;
+}
+
+.chevron {
+  @include flex-center;
+  width: $faq-col-icon;
+  height: $faq-col-icon;
+  color: $primary;
+  background: $accent-light;
+  border-radius: 50%;
+  font-size: 1rem;
+  justify-self: center;
+  transition: background $transition-fast, color $transition-fast;
+
+  .open & {
+    color: $secondary;
+    background: $primary;
+  }
+}
+
+.answerWrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  overflow: hidden;
+}
+
+.answer {
+  grid-column: 2;
+  margin: 0;
+  padding-bottom: 1.125rem;
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  font-weight: 500;
+  color: #2e2a27;
+}

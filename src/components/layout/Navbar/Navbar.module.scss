@@ -1,0 +1,260 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  inset-inline: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+  transition: background $transition-base, padding $transition-base,
+    box-shadow $transition-base, backdrop-filter $transition-base;
+
+  // Transparent over hero — light text for contrast
+  &.overHero {
+    background: linear-gradient(
+      to bottom,
+      rgba(20, 12, 6, 0.72) 0%,
+      rgba(20, 12, 6, 0.35) 70%,
+      transparent 100%
+    );
+
+    .logoName {
+      color: $hero-text;
+    }
+
+    .logoSub {
+      color: $hero-text-muted;
+    }
+
+    .link {
+      color: rgba(255, 255, 255, 0.88);
+      font-weight: 600;
+
+      &:hover {
+        color: $hero-text;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      &.active {
+        color: $hero-text;
+        background: rgba(255, 255, 255, 0.12);
+
+        &::after {
+          background: #e8c9a8;
+        }
+      }
+    }
+
+    .ctaBtn {
+      background: $secondary;
+      color: $primary;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+
+      &:hover {
+        background: #f5efe8;
+        color: $primary-dark;
+      }
+    }
+
+    .menuBtn {
+      color: $hero-text;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+
+  &.scrolled {
+    padding: 0.75rem 0;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: $shadow-sm;
+    border-bottom: 1px solid $border;
+  }
+}
+
+.inner {
+  @include container;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  border-radius: $radius-sm;
+  @include focus-ring;
+}
+
+.logoIcon {
+  @include flex-center;
+  width: 44px;
+  height: 44px;
+  background: $primary;
+  color: $secondary;
+  font-family: $font-english;
+  font-weight: 800;
+  font-size: 1.25rem;
+  border-radius: $radius-sm;
+  flex-shrink: 0;
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.logoName {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: $text-dark;
+  transition: color $transition-base;
+}
+
+.logoSub {
+  font-size: 0.75rem;
+  color: $text-subtle;
+  letter-spacing: 0.04em;
+  transition: color $transition-base;
+}
+
+.links {
+  display: none;
+  align-items: center;
+  gap: 0.125rem;
+  margin-inline-start: auto;
+
+  @media (min-width: $bp-desktop) {
+    display: flex;
+  }
+}
+
+.link {
+  @include touch-target;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 0.875rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: $text-subtle;
+  border-radius: $radius-sm;
+  transition: color $transition-fast, background $transition-fast;
+  position: relative;
+  @include focus-ring;
+
+  &:hover {
+    color: $primary;
+    background: $accent-light;
+  }
+
+  &.active {
+    color: $primary;
+    background: $accent-light;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      inset-inline: 0.875rem;
+      height: 2px;
+      background: $accent-text;
+      border-radius: 1px;
+    }
+  }
+}
+
+.ctaBtn {
+  display: none;
+  @include touch-target;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background: $primary;
+  color: $secondary;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  border-radius: $radius-md;
+  transition: background $transition-base, transform $transition-base, box-shadow $transition-base;
+  box-shadow: 0 2px 8px rgba(96, 57, 19, 0.2);
+  @include focus-ring;
+
+  &:hover {
+    background: $primary-dark;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(96, 57, 19, 0.3);
+  }
+
+  @media (min-width: $bp-desktop) {
+    display: inline-flex;
+  }
+}
+
+.menuBtn {
+  @include touch-target;
+  @include flex-center;
+  font-size: 1.5rem;
+  color: $primary;
+  margin-inline-start: auto;
+  border-radius: $radius-sm;
+  transition: background $transition-fast, color $transition-fast;
+  @include focus-ring;
+
+  &:hover {
+    background: $accent-light;
+  }
+
+  @media (min-width: $bp-desktop) {
+    display: none;
+  }
+}
+
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  top: 72px;
+  background: rgba(250, 248, 245, 0.98);
+  backdrop-filter: blur(20px);
+  z-index: 999;
+  padding: 2rem $container-padding;
+
+  @media (min-width: $bp-desktop) {
+    display: none;
+  }
+}
+
+.mobileLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  a {
+    @include touch-target;
+    display: flex;
+    align-items: center;
+    padding: 0.875rem 1.25rem;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: $text-dark;
+    border-radius: $radius-md;
+    transition: background $transition-fast, color $transition-fast;
+    @include focus-ring;
+
+    &:hover,
+    &.active {
+      background: $accent-light;
+      color: $primary;
+    }
+
+    &.active {
+      border-inline-start: 3px solid $accent-text;
+    }
+  }
+}

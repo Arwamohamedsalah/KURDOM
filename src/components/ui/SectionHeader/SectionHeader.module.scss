@@ -1,0 +1,51 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.header {
+  margin-bottom: clamp(3rem, 6vw, 4.5rem);
+  max-width: 720px;
+}
+
+.center {
+  text-align: center;
+  margin-inline: auto;
+
+  .subtitle {
+    margin-inline: auto;
+  }
+}
+
+.start {
+  text-align: start;
+  margin-inline: 0;
+}
+
+.label {
+  @include section-label;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.title {
+  @include heading-lg;
+  margin-bottom: 1.125rem;
+}
+
+.subtitle {
+  @include body-text;
+  max-width: 560px;
+}
+
+.light {
+  .label {
+    color: #d4b896;
+  }
+
+  .title {
+    color: $secondary;
+  }
+
+  .subtitle {
+    color: rgba(255, 255, 255, 0.82);
+  }
+}

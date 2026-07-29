@@ -1,0 +1,123 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.section {
+  padding-block: $section-padding;
+  background: $secondary;
+}
+
+.container {
+  @include container;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  @media (min-width: $bp-tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: $bp-wide) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.card {
+  background: $background;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  border: 1px solid $border;
+  box-shadow: $shadow-sm;
+  transition: box-shadow $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-lg;
+
+    .imageWrap img {
+      transform: scale(1.08);
+    }
+  }
+}
+
+.imageWrap {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+}
+
+.typeBadge {
+  position: absolute;
+  top: 1rem;
+  inset-inline-start: 1rem;
+  padding: 0.35rem 0.875rem;
+  background: $primary;
+  color: $secondary;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 100px;
+}
+
+.cardBody {
+  padding: 1.5rem;
+}
+
+.title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: $text-dark;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.amount {
+  font-family: $font-english;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: $primary;
+}
+
+.currency {
+  font-size: 0.85rem;
+  color: $text-muted;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid $border;
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.85rem;
+    color: $text-muted;
+
+    svg {
+      color: $accent;
+    }
+  }
+}
+
+.btn {
+  width: 100%;
+}
