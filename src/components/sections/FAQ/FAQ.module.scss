@@ -81,6 +81,8 @@ $faq-gap: 0.875rem;
   text-align: center;
   line-height: 1;
   min-width: 2rem;
+  direction: ltr;
+  unicode-bidi: isolate;
 }
 
 .qText {
@@ -120,4 +122,10 @@ $faq-gap: 0.875rem;
   line-height: 1.85;
   font-weight: 500;
   color: #2e2a27;
+
+  :global(.ltr) {
+    direction: ltr;
+    unicode-bidi: isolate;
+    display: inline-block;
+  }
 }

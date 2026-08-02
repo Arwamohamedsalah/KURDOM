@@ -37,7 +37,16 @@ const About = () => {
             >
               {aboutContent.highlights.map((item) => (
                 <motion.div key={item.label} className={styles.stat} variants={scaleFadeIn}>
-                  <span className={`${styles.statValue} ${item.label === 'الموقع الإلكتروني' ? 'en' : ''}`}>
+                  <span
+                    className={`${styles.statValue} ${
+                      item.label === 'الموقع الإلكتروني'
+                        ? 'en'
+                        : item.label === 'رخصة فال'
+                          ? 'ltr'
+                          : ''
+                    }`}
+                    dir={item.label === 'رخصة فال' ? 'ltr' : undefined}
+                  >
                     {item.value}
                   </span>
                   <span className={styles.statLabel}>{item.label}</span>

@@ -6,6 +6,20 @@ import { faqItems } from '../../../data/content';
 import { staggerContainer, scaleFadeIn, springSoft, viewportOnce } from '../../../utils/animations';
 import styles from './FAQ.module.scss';
 
+const PHONE_PATTERN = /(\+966[\d\s]+)/g;
+const PHONE_SEGMENT = /^\+966[\d\s]+$/;
+
+const renderAnswer = (answer) =>
+  answer.split(PHONE_PATTERN).map((part, index) =>
+    PHONE_SEGMENT.test(part) ? (
+      <span key={index} className="ltr" dir="ltr">
+        {part}
+      </span>
+    ) : (
+      part
+    )
+  );
+
 const FAQItem = ({ item, isOpen, onToggle, index }) => {
   return (
     <motion.div
@@ -13,7 +27,9 @@ const FAQItem = ({ item, isOpen, onToggle, index }) => {
       variants={scaleFadeIn}
     >
       <button className={styles.question} onClick={onToggle} aria-expanded={isOpen}>
-        <span className={styles.qIndex}>0{index + 1}</span>
+        <span className={styles.qIndex} dir="ltr">
+          {String(index + 1).padStart(2, '0')}
+        </span>
         <span className={styles.qText}>{item.question}</span>
         <motion.span
           className={styles.chevron}
@@ -33,7 +49,7 @@ const FAQItem = ({ item, isOpen, onToggle, index }) => {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className={styles.answer}>{item.answer}</p>
+            <p className={styles.answer}>{renderAnswer(item.answer)}</p>
           </motion.div>
         )}
       </AnimatePresence>

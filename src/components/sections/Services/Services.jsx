@@ -47,8 +47,8 @@ const Services = () => {
                     <Icon aria-hidden="true" />
                   </div>
                   <div className={styles.cardHeading}>
-                    <span className={`${styles.serviceIndex} en`}>
-                      0{index + 1}
+                    <span className={`${styles.serviceIndex} en`} dir="ltr">
+                      {String(index + 1).padStart(2, '0')}
                     </span>
                     <h3 className={styles.serviceTitle}>{service.title}</h3>
                   </div>
