@@ -21,12 +21,8 @@
       transparent 100%
     );
 
-    .logoName {
-      color: $hero-text;
-    }
-
-    .logoSub {
-      color: $hero-text-muted;
+    .logoImage {
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
     }
 
     .link {
@@ -93,10 +89,18 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
   flex-shrink: 0;
   border-radius: $radius-sm;
   @include focus-ring;
+}
+
+.logoImage {
+  display: block;
+  height: clamp(2.625rem, 7vw, 3.125rem);
+  width: auto;
+  object-fit: contain;
+  border-radius: $radius-sm;
+  transition: opacity $transition-fast;
 }
 
 .logoIcon {

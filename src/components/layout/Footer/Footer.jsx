@@ -1,5 +1,5 @@
 import { FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
-import { companyInfo, navLinks } from '../../../data/content';
+import { companyInfo, navLinks, brandLogos } from '../../../data/content';
 import styles from './Footer.module.scss';
 
 const Footer = () => {
@@ -11,11 +11,13 @@ const Footer = () => {
         <div className={styles.grid}>
           <div className={styles.brand}>
             <div className={styles.logo}>
-              <span className={styles.logoIcon}>K</span>
-              <div>
-                <span className={styles.logoName}>{companyInfo.nameAr}</span>
-                <span className={`${styles.logoSub} en`}>{companyInfo.name}</span>
-              </div>
+              <img
+                src={brandLogos.onDark}
+                alt={companyInfo.nameAr}
+                className={styles.logoImage}
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <p className={styles.tagline}>
               شريكك الموثوق في الاستثمار العقاري — {companyInfo.serviceArea}

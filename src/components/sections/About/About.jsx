@@ -15,7 +15,6 @@ const About = () => {
             <ParallaxImage
               src={aboutContent.image}
               alt="كردم العقارية"
-              badge={aboutContent.highlights[0].label}
             />
           </ScrollReveal>
 

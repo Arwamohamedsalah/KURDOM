@@ -11,7 +11,7 @@ import {
   FaHandshake,
 } from 'react-icons/fa';
 const aboutImage =
-  'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=900&q=80';
+  'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=85';
 
 export const companyInfo = {
   name: 'Kurdm Real Estate',
@@ -24,6 +24,11 @@ export const companyInfo = {
   address: 'جدة، المملكة العربية السعودية',
   falLicense: '1200030957',
   serviceArea: 'جميع أنحاء المملكة',
+};
+
+export const brandLogos = {
+  onLight: '/logo%20white.jpeg',
+  onDark: '/logo%20brown.jpeg',
 };
 
 export const navLinks = [
@@ -167,7 +172,7 @@ export const specializedServicesContent = {
 };
 
 export const whyChooseImage =
-  'https://images.unsplash.com/photo-1578894381163-e72c17f2d45b?w=900&q=80';
+  'https://images.unsplash.com/photo-1699954669485-812988f5c2db?w=1200&q=85';
 
 export const whyChoose = [
   {

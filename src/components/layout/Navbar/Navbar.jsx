@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenu, HiX } from 'react-icons/hi';
-import { navLinks, companyInfo } from '../../../data/content';
+import { navLinks, companyInfo, brandLogos } from '../../../data/content';
 import styles from './Navbar.module.scss';
 
 const Navbar = () => {
@@ -59,11 +59,13 @@ const Navbar = () => {
             handleNavClick('home');
           }}
         >
-          <span className={styles.logoIcon}>K</span>
-          <div className={styles.logoText}>
-            <span className={styles.logoName}>{companyInfo.nameAr}</span>
-            <span className={`${styles.logoSub} en`}>{companyInfo.name}</span>
-          </div>
+          <img
+            src={overHero ? brandLogos.onDark : brandLogos.onLight}
+            alt={companyInfo.nameAr}
+            className={styles.logoImage}
+            loading="eager"
+            decoding="async"
+          />
         </a>
 
         <ul className={styles.links}>

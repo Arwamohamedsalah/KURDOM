@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import SectionHeader from '../../ui/SectionHeader';
-import { coreValues } from '../../../data/content';
-import logoMark from '../../../assets/logo-mark.svg';
+import { coreValues, brandLogos, companyInfo } from '../../../data/content';
 import { staggerContainer, scaleFadeIn, viewportOnce } from '../../../utils/animations';
 import styles from './CoreValues.module.scss';
 
@@ -41,9 +40,16 @@ const CoreValues = () => {
           <motion.div className={styles.logoHub} variants={scaleFadeIn}>
             <span className={`${styles.connector} ${styles.connectorStart}`} aria-hidden="true" />
             <span className={`${styles.connector} ${styles.connectorEnd}`} aria-hidden="true" />
-            <div className={styles.logoRing} aria-hidden="true" />
-            <img src={logoMark} alt="" className={styles.logoMark} />
-            <span className={`${styles.logoCaption} en`}>Kurdm Real Estate</span>
+            <div className={styles.logoGlow} aria-hidden="true" />
+            <div className={styles.logoPedestal}>
+              <img
+                src={brandLogos.onLight}
+                alt={companyInfo.nameAr}
+                className={styles.logoMark}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </motion.div>
 
           <motion.article

@@ -28,10 +28,15 @@
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
   margin-bottom: 1.25rem;
+}
+
+.logoImage {
+  display: block;
+  height: clamp(4.5rem, 10vw, 5.5rem);
+  width: auto;
+  object-fit: contain;
+  border-radius: $radius-sm;
 }
 
 .logoIcon {
