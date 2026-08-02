@@ -18,7 +18,7 @@ const Footer = () => {
               </div>
             </div>
             <p className={styles.tagline}>
-              شريكك الموثوق في الاستثمار العقاري — جدة، المملكة العربية السعودية
+              شريكك الموثوق في الاستثمار العقاري — {companyInfo.serviceArea}
             </p>
           </div>
 
@@ -61,7 +61,7 @@ const Footer = () => {
             &copy; {currentYear}{' '}
             <span className="en">{companyInfo.name}</span>. جميع الحقوق محفوظة.
           </p>
-          <p className={`${styles.location} en`}>{companyInfo.location}</p>
+          <p className={`${styles.location} en`}>{companyInfo.website}</p>
         </div>
       </div>
     </footer>

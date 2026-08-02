@@ -9,15 +9,57 @@
   @include container;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
+.slider {
+  display: flex;
+  flex-direction: column;
   gap: 1.25rem;
+}
 
-  @media (min-width: $bp-tablet) {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.625rem;
+}
+
+.tab {
+  @include focus-ring;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  padding: 0.875rem 1rem;
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  text-align: start;
+  transition: background $transition-fast, border-color $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    border-color: $border-strong;
   }
+}
+
+.tabActive {
+  background: $surface-muted;
+  border-color: rgba(96, 57, 19, 0.2);
+  box-shadow: $shadow-xs;
+}
+
+.tabLabel {
+  @include section-label;
+  font-size: 0.625rem;
+}
+
+.tabTitle {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: $primary-dark;
+  line-height: 1.4;
+}
+
+.stage {
+  position: relative;
+  min-height: 16rem;
 }
 
 .card {
@@ -26,7 +68,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  height: 100%;
+  min-height: 16rem;
   position: relative;
   overflow: hidden;
 
@@ -38,12 +80,6 @@
     width: 3px;
     height: 100%;
     background: linear-gradient(to bottom, $accent, $primary);
-    opacity: 0;
-    transition: opacity $transition-base;
-  }
-
-  &:hover::before {
-    opacity: 1;
   }
 }
 
@@ -64,7 +100,53 @@
 
 .cardDesc {
   font-size: 0.9375rem;
-  line-height: 1.75;
+  line-height: 1.85;
   color: $text-muted;
   flex: 1;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.dot {
+  @include focus-ring;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: $border-strong;
+  padding: 0;
+  transition: background $transition-fast, transform $transition-fast;
+
+  &:hover {
+    background: $accent;
+  }
+}
+
+.dotActive {
+  background: $primary;
+  transform: scale(1.2);
+}
+
+@media (max-width: #{$bp-tablet - 1px}) {
+  .tabs {
+    grid-template-columns: 1fr;
+  }
+
+  .tab {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .stage {
+    min-height: 18rem;
+  }
+
+  .card {
+    min-height: 18rem;
+    padding: 1.5rem 1.375rem;
+  }
 }

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 250" fill="none" aria-hidden="true">
+  <path
+    d="M220 16 L402 118 V228 H38 V118 Z"
+    stroke="#f5f0ea"
+    stroke-width="2.5"
+    stroke-linejoin="round"
+    opacity="0.92"
+  />
+  <path
+    d="M118 228 V150 L220 88 L322 150 V228"
+    stroke="#d8a86c"
+    stroke-width="2.5"
+    stroke-linejoin="round"
+    opacity="0.95"
+  />
+  <path
+    d="M168 228 V176 H272 V228"
+    stroke="#d8a86c"
+    stroke-width="2.5"
+    stroke-linejoin="round"
+    opacity="0.95"
+  />
+  <path
+    d="M220 16 V88"
+    stroke="#f5f0ea"
+    stroke-width="2"
+    opacity="0.55"
+  />
+  <path
+    d="M118 150 H322"
+    stroke="#d8a86c"
+    stroke-width="2"
+    opacity="0.45"
+  />
+</svg>

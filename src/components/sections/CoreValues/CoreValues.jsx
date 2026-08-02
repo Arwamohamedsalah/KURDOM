@@ -1,10 +1,15 @@
 import { motion } from 'framer-motion';
 import SectionHeader from '../../ui/SectionHeader';
 import { coreValues } from '../../../data/content';
+import logoMark from '../../../assets/logo-mark.svg';
 import { staggerContainer, scaleFadeIn, viewportOnce } from '../../../utils/animations';
 import styles from './CoreValues.module.scss';
 
 const CoreValues = () => {
+  const [trustValue, qualityValue] = coreValues;
+  const TrustIcon = trustValue.icon;
+  const QualityIcon = qualityValue.icon;
+
   return (
     <section className={styles.section}>
       <div className={styles.container}>
@@ -16,27 +21,41 @@ const CoreValues = () => {
         />
 
         <motion.div
-          className={styles.grid}
-          variants={staggerContainer(0.08, 0.15)}
+          className={styles.diagram}
+          variants={staggerContainer(0.12, 0.1)}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
         >
-          {coreValues.map((value) => {
-            const Icon = value.icon;
-            return (
-              <motion.div
-                key={value.title}
-                className={styles.valueCard}
-                variants={scaleFadeIn}
-              >
-                <div className={styles.iconWrap}>
-                  <Icon />
-                </div>
-                <h3 className={styles.title}>{value.title}</h3>
-              </motion.div>
-            );
-          })}
+          <motion.article
+            className={`${styles.valueCard} ${styles.valueStart}`}
+            variants={scaleFadeIn}
+          >
+            <div className={styles.iconWrap}>
+              <TrustIcon aria-hidden="true" />
+            </div>
+            <h3 className={styles.title}>{trustValue.title}</h3>
+            <p className={styles.description}>{trustValue.description}</p>
+          </motion.article>
+
+          <motion.div className={styles.logoHub} variants={scaleFadeIn}>
+            <span className={`${styles.connector} ${styles.connectorStart}`} aria-hidden="true" />
+            <span className={`${styles.connector} ${styles.connectorEnd}`} aria-hidden="true" />
+            <div className={styles.logoRing} aria-hidden="true" />
+            <img src={logoMark} alt="" className={styles.logoMark} />
+            <span className={`${styles.logoCaption} en`}>Kurdm Real Estate</span>
+          </motion.div>
+
+          <motion.article
+            className={`${styles.valueCard} ${styles.valueEnd}`}
+            variants={scaleFadeIn}
+          >
+            <div className={styles.iconWrap}>
+              <QualityIcon aria-hidden="true" />
+            </div>
+            <h3 className={styles.title}>{qualityValue.title}</h3>
+            <p className={styles.description}>{qualityValue.description}</p>
+          </motion.article>
         </motion.div>
       </div>
     </section>

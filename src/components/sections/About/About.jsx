@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import SectionHeader from '../../ui/SectionHeader';
-import AnimatedCounter from '../../ui/AnimatedCounter';
 import ParallaxImage from '../../ui/ParallaxImage';
 import ScrollReveal from '../../ui/ScrollReveal';
 import { aboutContent } from '../../../data/content';
@@ -15,8 +14,8 @@ const About = () => {
           <ScrollReveal direction="right">
             <ParallaxImage
               src={aboutContent.image}
-              alt="Real estate consultation"
-              badge="خبرة +15 سنة"
+              alt="كردم العقارية"
+              badge={aboutContent.highlights[0].label}
             />
           </ScrollReveal>
 
@@ -37,12 +36,12 @@ const About = () => {
               whileInView="visible"
               viewport={viewportOnce}
             >
-              {aboutContent.stats.map((stat) => (
-                <motion.div key={stat.label} className={styles.stat} variants={scaleFadeIn}>
-                  <span className={styles.statValue}>
-                    <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+              {aboutContent.highlights.map((item) => (
+                <motion.div key={item.label} className={styles.stat} variants={scaleFadeIn}>
+                  <span className={`${styles.statValue} ${item.label === 'الموقع الإلكتروني' ? 'en' : ''}`}>
+                    {item.value}
                   </span>
-                  <span className={styles.statLabel}>{stat.label}</span>
+                  <span className={styles.statLabel}>{item.label}</span>
                 </motion.div>
               ))}
             </motion.div>

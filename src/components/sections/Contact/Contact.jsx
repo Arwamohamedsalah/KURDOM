@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaWhatsapp } from 'react-icons/fa';
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaWhatsapp, FaGlobe } from 'react-icons/fa';
 import SectionHeader from '../../ui/SectionHeader';
 import { companyInfo } from '../../../data/content';
 import { staggerContainer, scaleFadeIn, viewportOnce } from '../../../utils/animations';
@@ -25,10 +25,18 @@ const contactItems = [
     href: `mailto:${companyInfo.email}`,
   },
   {
+    icon: FaGlobe,
+    title: 'الموقع الإلكتروني',
+    content: companyInfo.website,
+    href: `https://${companyInfo.website}`,
+    external: true,
+    ltr: true,
+  },
+  {
     icon: FaWhatsapp,
     title: 'واتساب',
     content: 'تواصل عبر واتساب',
-    href: `https://wa.me/${companyInfo.phone.replace(/\s/g, '')}`,
+    href: `https://wa.me/${companyInfo.phone.replace(/\D/g, '')}`,
     external: true,
   },
 ];
@@ -67,8 +75,8 @@ const Contact = () => {
                   {item.href ? (
                     <a
                       href={item.href}
-                      className={item.title === 'الهاتف' ? 'ltr' : undefined}
-                      dir={item.title === 'الهاتف' ? 'ltr' : undefined}
+                      className={item.ltr || item.title === 'الهاتف' ? 'ltr' : undefined}
+                      dir={item.ltr || item.title === 'الهاتف' ? 'ltr' : undefined}
                       target={item.external ? '_blank' : undefined}
                       rel={item.external ? 'noopener noreferrer' : undefined}
                     >
