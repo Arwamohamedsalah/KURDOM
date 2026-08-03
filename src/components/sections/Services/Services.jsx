@@ -42,14 +42,15 @@ const Services = () => {
                 className={styles.card}
                 variants={cardReveal}
               >
+                <span className={`${styles.serviceIndex} en`} dir="ltr">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+
                 <div className={styles.cardTop}>
                   <div className={styles.iconWrap}>
                     <Icon aria-hidden="true" />
                   </div>
                   <div className={styles.cardHeading}>
-                    <span className={`${styles.serviceIndex} en`} dir="ltr">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
                     <h3 className={styles.serviceTitle}>{service.title}</h3>
                   </div>
                 </div>
