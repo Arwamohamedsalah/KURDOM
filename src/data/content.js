@@ -41,7 +41,9 @@ export const navLinks = [
 
 export const heroContent = {
   headlineEn: 'Invest with Confidence',
-  headlineAr: 'استثمر بثقة مع كردم العقارية',
+  headlineArLead: 'استثمر بثقة مع',
+  headlineArBrandName: 'كردم',
+  headlineArBrandSuffix: 'العقارية',
   description:
     'شركة عقارية متخصصة في تقديم الخدمات والحلول العقارية المتكاملة للأفراد والمستثمرين، من خلال منظومة عمل احترافية تركز على الجودة والشفافية والمصداقية.',
   primaryBtn: 'ابدأ رحلتك الاستثمارية',

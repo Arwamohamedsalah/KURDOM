@@ -60,7 +60,7 @@ const Navbar = () => {
           }}
         >
           <img
-            src={overHero ? brandLogos.onDark : brandLogos.onLight}
+            src={overHero ? brandLogos.onLight : brandLogos.onDark}
             alt={companyInfo.nameAr}
             className={styles.logoImage}
             loading="eager"

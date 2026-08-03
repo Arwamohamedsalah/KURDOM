@@ -77,6 +77,42 @@
   @include text-shadow-hero;
 }
 
+.headlineLead,
+.headlineBrand {
+  display: inline;
+}
+
+.headlineLead::after {
+  content: '\00a0';
+}
+
+.headlineBrandName::after {
+  content: '\00a0';
+}
+
+@media (max-width: $bp-desktop) {
+  .headline {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .headlineLead::after {
+    content: none;
+  }
+
+  .headlineBrand {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    white-space: nowrap;
+  }
+
+  .headlineBrandName::after {
+    content: none;
+  }
+}
+
 .description {
   font-size: clamp(1.05rem, 2vw, 1.2rem);
   line-height: 1.85;

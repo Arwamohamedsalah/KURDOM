@@ -32,7 +32,11 @@ const Hero = () => {
           </motion.span>
 
           <motion.h1 className={styles.headline} variants={heroItemVariants}>
-            {heroContent.headlineAr}
+            <span className={styles.headlineLead}>{heroContent.headlineArLead}</span>
+            <span className={styles.headlineBrand}>
+              <span className={styles.headlineBrandName}>{heroContent.headlineArBrandName}</span>
+              <span className={styles.headlineBrandSuffix}>{heroContent.headlineArBrandSuffix}</span>
+            </span>
           </motion.h1>
 
           <motion.p className={styles.description} variants={heroItemVariants}>

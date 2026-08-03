@@ -12,7 +12,7 @@ const Footer = () => {
           <div className={styles.brand}>
             <div className={styles.logo}>
               <img
-                src={brandLogos.onDark}
+                src={brandLogos.onLight}
                 alt={companyInfo.nameAr}
                 className={styles.logoImage}
                 loading="lazy"
