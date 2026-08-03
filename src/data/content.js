@@ -171,8 +171,7 @@ export const specializedServicesContent = {
   ],
 };
 
-export const whyChooseImage =
-  'https://images.unsplash.com/photo-1699954669485-812988f5c2db?w=1200&q=85';
+export const whyChooseImage = '/واجهه%20جده%20البحرية%202.jpeg';
 
 export const whyChoose = [
   {
