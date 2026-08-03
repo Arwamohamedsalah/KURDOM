@@ -22,13 +22,9 @@ const CTA = () => {
 
   return (
     <section className={styles.section} ref={ref}>
-      <div className={styles.bgImage}>
+      <div className={styles.bgImage} aria-hidden="true">
         <motion.div className={styles.bgInner} style={{ y: bgY, scale: bgScale }}>
-          <img
-            src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cd97?w=1920&q=80"
-            alt="Luxury architecture"
-            loading="lazy"
-          />
+          <img src={ctaContent.background} alt="" loading="lazy" decoding="async" />
         </motion.div>
         <div className={styles.overlay} />
       </div>

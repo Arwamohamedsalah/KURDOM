@@ -224,6 +224,7 @@ export const ctaContent = {
   description:
     'تواصل مع فريق كردم العقارية واكتشف أفضل الفرص العقارية في جميع أنحاء المملكة.',
   button: 'تواصل معنا',
+  background: '/Generated_image.png',
 };
 
 // Legacy exports kept for unused sections
