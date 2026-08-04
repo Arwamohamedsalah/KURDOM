@@ -74,6 +74,20 @@
     box-shadow: $shadow-sm;
     border-bottom: 1px solid $border;
   }
+
+  &.menuOpen {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: $shadow-sm;
+    border-bottom: 1px solid $border;
+
+    .menuBtn {
+      color: $primary;
+      background: $accent-light;
+      border: 1px solid $border;
+    }
+  }
 }
 
 .inner {
@@ -234,18 +248,36 @@
   }
 }
 
-.mobileMenu {
+.mobileBackdrop {
   position: fixed;
   inset: 0;
-  top: 72px;
+  z-index: 998;
+  border: none;
+  padding: 0;
+  background: rgba(12, 8, 4, 0.45);
+  cursor: pointer;
+
+  @media (min-width: $bp-desktop) {
+    display: none;
+  }
+}
+
+.mobileMenu {
+  position: fixed;
+  inset-inline: 0;
+  top: clamp(4.25rem, 12vw, 5rem);
+  bottom: 0;
   width: 100%;
   max-width: 100%;
+  height: calc(100dvh - clamp(4.25rem, 12vw, 5rem));
   background: rgba(250, 248, 245, 0.98);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   z-index: 999;
   padding: 2rem $container-padding;
   overflow-y: auto;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 
   @media (min-width: $bp-desktop) {
     display: none;

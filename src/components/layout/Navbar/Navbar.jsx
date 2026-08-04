@@ -43,8 +43,9 @@ const Navbar = () => {
   const overHero = !scrolled;
 
   return (
+    <>
     <motion.header
-      className={`${styles.navbar} ${scrolled ? styles.scrolled : ''} ${overHero ? styles.overHero : ''}`}
+      className={`${styles.navbar} ${scrolled ? styles.scrolled : ''} ${overHero ? styles.overHero : ''} ${mobileOpen ? styles.menuOpen : ''}`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
@@ -60,7 +61,7 @@ const Navbar = () => {
           }}
         >
           <img
-            src={overHero ? brandLogos.onLight : brandLogos.onDark}
+            src={overHero && !mobileOpen ? brandLogos.onLight : brandLogos.onDark}
             alt={companyInfo.nameAr}
             className={styles.logoImage}
             loading="eager"
@@ -105,11 +106,26 @@ const Navbar = () => {
           {mobileOpen ? <HiX /> : <HiMenu />}
         </button>
       </nav>
+    </motion.header>
 
-      <AnimatePresence>
-        {mobileOpen && (
+    <AnimatePresence>
+      {mobileOpen && (
+        <>
+          <motion.button
+            type="button"
+            className={styles.mobileBackdrop}
+            aria-label="إغلاق القائمة"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            onClick={() => setMobileOpen(false)}
+          />
           <motion.div
             className={styles.mobileMenu}
+            role="dialog"
+            aria-modal="true"
+            aria-label="قائمة التنقل"
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
@@ -137,9 +153,10 @@ const Navbar = () => {
               ))}
             </ul>
           </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.header>
+        </>
+      )}
+    </AnimatePresence>
+    </>
   );
 };
 
