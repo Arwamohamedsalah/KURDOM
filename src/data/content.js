@@ -26,6 +26,17 @@ export const companyInfo = {
   serviceArea: 'جميع أنحاء المملكة',
 };
 
+export const siteSeo = {
+  siteUrl: 'https://www.kurdm.com.sa',
+  title: 'كردم العقارية | Kurdm Real Estate',
+  description:
+    'كردم العقارية — شركة عقارية سعودية متخصصة في بيع وشراء وتأجير العقارات، التسويق العقاري، الاستشارات، وإدارة الأملاك في جدة وجميع أنحاء المملكة.',
+  keywords:
+    'كردم العقارية, Kurdm Real Estate, عقارات جدة, عقارات السعودية, استثمار عقاري, إدارة أملاك, تسويق عقاري, استشارات عقارية, رخصة فال',
+  ogImage: '/logo%20brown.jpeg',
+  locale: 'ar_SA',
+};
+
 export const brandLogos = {
   onLight: '/logo%20white.jpeg',
   onDark: '/logo%20brown.jpeg',

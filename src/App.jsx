@@ -1,5 +1,6 @@
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import Seo from './components/Seo';
 import Hero from './components/sections/Hero';
 import About from './components/sections/About';
 import VisionMission from './components/sections/VisionMission';
@@ -14,6 +15,7 @@ import CTA from './components/sections/CTA';
 function App() {
   return (
     <>
+      <Seo />
       <a href="#main-content" className="skip-link">
         تخطي إلى المحتوى الرئيسي
       </a>
