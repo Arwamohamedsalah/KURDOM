@@ -40,12 +40,11 @@ const About = () => {
                   <span
                     className={`${styles.statValue} ${
                       item.label === 'الموقع الإلكتروني'
-                        ? 'en'
+                        ? styles.statValueWebsite
                         : item.label === 'رخصة فال'
-                          ? 'ltr'
+                          ? styles.statValueLicense
                           : ''
                     }`}
-                    dir={item.label === 'رخصة فال' ? 'ltr' : undefined}
                   >
                     {item.value}
                   </span>
